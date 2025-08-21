@@ -53,19 +53,15 @@ jobs:
       - name: Package binary
         shell: bash
         run: |
-          # Create the archive name
+          # Create the binary name with platform info
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            archive_name="port-check-${{ github.ref_name }}-${{ matrix.target }}.zip"
-            # Copy binary and create zip
-            cp target/${{ matrix.target }}/release/${{ matrix.binary_name }} .
-            7z a $archive_name ${{ matrix.binary_name }}
+            binary_name="tcp-check-${{ github.ref_name }}-${{ matrix.target }}.exe"
+            cp target/${{ matrix.target }}/release/${{ matrix.binary_name }} $binary_name
           else
-            archive_name="port-check-${{ github.ref_name }}-${{ matrix.target }}.tar.gz"
-            # Copy binary and create tar.gz
-            cp target/${{ matrix.target }}/release/${{ matrix.binary_name }} .
-            tar -czf $archive_name ${{ matrix.binary_name }}
+            binary_name="tcp-check-${{ github.ref_name }}-${{ matrix.target }}"
+            cp target/${{ matrix.target }}/release/${{ matrix.binary_name }} $binary_name
           fi
-          echo "ARCHIVE_NAME=$archive_name" >> $GITHUB_ENV
+          echo "ARCHIVE_NAME=$binary_name" >> $GITHUB_ENV
 
       - name: Upload to release
         uses: softprops/action-gh-release@v2
