@@ -20,10 +20,10 @@ jobs:
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
-            binary_name: port-check-gnu
+            binary_name: port-check
           - os: ubuntu-latest
             target: x86_64-unknown-linux-musl
-            binary_name: port-check-musl
+            binary_name: port-check
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             binary_name: port-check.exe
@@ -32,7 +32,7 @@ jobs:
           #   binary_name: port-check
           - os: macos-latest
             target: aarch64-apple-darwin
-            binary_name: port-check-darwin
+            binary_name: port-check
 
     steps:
       - name: Checkout code
