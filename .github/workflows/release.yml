@@ -55,10 +55,10 @@ jobs:
         run: |
           # Create the binary name with platform info
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            binary_name="tcp-check-${{ github.ref_name }}-${{ matrix.target }}.exe"
+            binary_name="port-check-${{ github.ref_name }}-${{ matrix.target }}.exe"
             cp target/${{ matrix.target }}/release/${{ matrix.binary_name }} $binary_name
           else
-            binary_name="tcp-check-${{ github.ref_name }}-${{ matrix.target }}"
+            binary_name="port-check-${{ github.ref_name }}-${{ matrix.target }}"
             cp target/${{ matrix.target }}/release/${{ matrix.binary_name }} $binary_name
           fi
           echo "ARCHIVE_NAME=$binary_name" >> $GITHUB_ENV
